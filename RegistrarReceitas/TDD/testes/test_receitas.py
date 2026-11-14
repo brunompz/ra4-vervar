@@ -13,3 +13,7 @@ def test_registrarReceitaComSucesso(receitas):
 def test_registrarReceitaComValorNaoNumerico(receitas):
     with pytest.raises(ValueError, match="O valor deve ser numérico"):
         receitas.registrar("Salário", "abc")
+
+def test_registrarReceitaComValorNegativo(receitas):
+    with pytest.raises(ValueError, match="O valor deve ser positivo"):
+        receitas.registrar("Salário", -50)
