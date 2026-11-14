@@ -21,7 +21,7 @@ Cenário: Valor não numérico
     Então o sistema deve exibir a mensagem "Valor inválido"
     E não deve registrar nenhuma despesa 
 
-Cenário: Valor zero ou negativo 
+Cenário: Valor negativo 
 	Dado que o usuário executou a aplicação no terminal 
     E que o menu principal está sendo exibido 
     Quando o usuário seleciona a opção "1" de registrar despesa 
