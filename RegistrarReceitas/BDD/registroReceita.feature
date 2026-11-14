@@ -22,12 +22,12 @@ Cenário: Valor não numérico
     Então o sistema deve exibir a mensagem "Valor inválido" 
     E não deve registrar nenhuma receita 
 
-Cenário: Valor zero ou negativo 
+Cenário: Valor negativo 
     Dado que o usuário executou a aplicação no terminal 
     E que o menu principal está sendo exibido 
     Quando o usuário seleciona a opção "2" de registrar receita 
     E informa a descrição "Freela" 
-    E informa o valor "0" 
+    E informa o valor -50 
     Então o sistema deve exibir a mensagem "O valor deve ser maior que zero" 
     E não deve registrar nenhuma receita 
 
@@ -36,5 +36,6 @@ Cenário: Descrição vazia
     E que o menu principal está sendo exibido 
     Quando o usuário seleciona a opção "2" de registrar receita 
     E informa a descrição "" 
+    E informa o valor 3000
     Então o sistema deve exibir a mensagem "A descrição é obrigatória" 
-    E não deve permitir o usuário prosseguir para a etapa de valor
+    E não deve registrar nenhuma receita
