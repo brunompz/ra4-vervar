@@ -12,4 +12,8 @@ def test_registrarDespesasComSucesso(despesas):
 def test_registrarDespesaComValorNegativo(despesas):
     with pytest.raises(ValueError, match="maior que zero"):
         despesas.registrar("Comida", -50)
+
+def test_registrarDespesaComValorNaoNumerico(despesas):
+    with pytest.raises(ValueError, match="O valor deve ser numérico"):
+        despesas.registrar("Comida", "abc")
     
