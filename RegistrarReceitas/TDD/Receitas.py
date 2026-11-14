@@ -1,3 +1,7 @@
+def validarCategoria(categoria):
+    if not categoria.strip():
+        raise ValueError("A categoria é obrigatória")
+
 def validarValor(valor):
     try:
         valor_num = float(valor)
@@ -11,8 +15,7 @@ class Receitas:
         self.itens= []
 
     def registrar(self, categoria, valor):
-        if not categoria.strip():
-            raise ValueError("A categoria é obrigatória")
+        validarCategoria(categoria)
         validarValor(valor)
         self.itens.append({"categoria": categoria, "valor": valor})
     
