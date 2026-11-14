@@ -10,5 +10,7 @@ class Receitas:
 
     def registrar(self, categoria, valor):
         validarValor(valor)
+        if valor <= 0:
+            raise ValueError("O valor deve ser positivo")
         self.itens.append({"categoria": categoria, "valor": valor})
     
