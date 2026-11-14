@@ -5,6 +5,10 @@ def validarValor(valor):
         raise ValueError("O valor deve ser numérico") 
     if valor_num <= 0:
         raise ValueError("O valor deve ser maior que zero")
+
+def validarCategoria(categoria):
+    if not categoria.strip():
+        raise ValueError("A categoria é obrigatória")
     
 
 class Despesas:
@@ -12,7 +16,6 @@ class Despesas:
         self.itens = []
 
     def registrar(self, categoria, valor):
-        if not categoria.strip():
-            raise ValueError("A categoria é obrigatória")
+        validarCategoria(categoria)
         validarValor(valor)
         self.itens.append({"categoria": categoria, "valor": valor})
