@@ -7,5 +7,9 @@ class Despesas:
         self.itens = []
 
     def registrar(self, categoria, valor):
+        try:
+            valor_num = float(valor)
+        except:
+            raise ValueError("O valor deve ser numérico") 
         validarValor(valor)
         self.itens.append({"categoria": categoria, "valor": valor})
