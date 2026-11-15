@@ -26,3 +26,10 @@ def test_calcularSaldoComRecorrentes(saldo):
     receitas_recorrentes = [{"categoria": "Salário", "valor": 3000.00, "dia": 5}]
     despesas_recorrentes = [{"categoria": "Energia", "valor": 250.00, "dia": 10}]
     assert saldo.calcular(receitas, despesas, receitas_recorrentes, despesas_recorrentes) == 3250.00
+
+def test_desconsiderarRecorrentesComDiaFuturo(saldo):
+    receitas = [{"categoria": "Bônus", "valor": 1000.00}]
+    despesas = [{"categoria": "Comida", "valor": 400.00}]
+    receitas_recorrentes = [{"categoria": "Salário", "valor": 3000.00, "dia": 20}]
+    despesas_recorrentes = [{"categoria": "Energia", "valor": 250.00, "dia": 15}]
+    assert saldo.calcular(receitas, despesas, receitas_recorrentes, despesas_recorrentes, dia_atual=5) == 600.00
