@@ -16,3 +16,7 @@ def test_registrarDespesaRecorrenteComValorNaoNumerico(despesas_recorrentes):
 def test_registrarDespesaRecorrenteComValorNegativo(despesas_recorrentes):
     with pytest.raises(ValueError, match="O valor deve ser maior que zero"):
         despesas_recorrentes.registrar("Energia", -50, 5)
+
+def test_registrarDespesaRecorrenteComValorVazio(despesas_recorrentes):
+    with pytest.raises(ValueError, match="O valor é obrigatório"):
+        despesas_recorrentes.registrar("Energia", "", 5)
