@@ -4,15 +4,16 @@ Escopo: Sistema de controle de gastos pessoais
 
 Funcionalidades:
 
-1. Registrar despesa.
+1. Registrar despesa. - Bruno
 
-1.5. Registrar receita.
+1.5. Registrar receita. - Bruno
 
-2. Registrar despesa recorrente.
+2. Registrar despesa mensal recorrente. - João
 
-3. Registrar receita mensal recorrente.
+3. Registrar receita mensal recorrente. - João
 
-4. Calcular saldo.
+4. Calcular saldo. 
+    - Acredito que calcular saldo precise contabilizar os registros recorrentes e lançar automaticamente se o dia for = ao dia do lançamento estabelecido.
 
 5. Registrar categoria do lançamento.
 
