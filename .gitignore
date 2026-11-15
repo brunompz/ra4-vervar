@@ -1,1 +1,12 @@
-/.pytest_cache
+# Caches Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches de testes e ferramentas
+.pytest_cache/
+.cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
