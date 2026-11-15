@@ -1,4 +1,4 @@
-from RegistrarDespesasRecorrentes.TDD.DespesasRecorrentes import validarCategoria, validarValor
+from RegistrarDespesasRecorrentes.TDD.DespesasRecorrentes import validarCategoria, validarDia, validarValor
 
 
 class ReceitasRecorrentes:
@@ -8,6 +8,5 @@ class ReceitasRecorrentes:
     def registrar(self, categoria, valor, dia):
         validarCategoria(categoria)
         validarValor(valor)
-        if dia is None or (isinstance(dia, str) and not dia.strip()):
-            raise ValueError("O dia de ocorrência é obrigatório")
+        validarDia(dia)
         self.itens.append({"categoria": categoria, "valor": valor, "dia": dia})
