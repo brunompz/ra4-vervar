@@ -9,12 +9,16 @@ def somarRecorrentes(itens, dia_atual=None):
     return somarValores(filtrados)
 
 
+def validarLancamentos(receitas, despesas, receitas_recorrentes, despesas_recorrentes):
+    if not receitas and not despesas and not receitas_recorrentes and not despesas_recorrentes:
+        raise ValueError("Nenhum lançamento registrado")
+
+
 class Saldo:
     def calcular(self, receitas, despesas, receitas_recorrentes=None, despesas_recorrentes=None, dia_atual=None):
         receitas_recorrentes = receitas_recorrentes or []
         despesas_recorrentes = despesas_recorrentes or []
-        if not receitas and not despesas and not receitas_recorrentes and not despesas_recorrentes:
-            raise ValueError("Nenhum lançamento registrado")
+        validarLancamentos(receitas, despesas, receitas_recorrentes, despesas_recorrentes)
         total_receitas = somarValores(receitas) + somarRecorrentes(receitas_recorrentes, dia_atual)
         total_despesas = somarValores(despesas) + somarRecorrentes(despesas_recorrentes, dia_atual)
         return total_receitas - total_despesas
