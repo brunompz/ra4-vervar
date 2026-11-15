@@ -21,7 +21,7 @@ Funcionalidades:
 
 7. Visualizar o total por categoria.
 
-8. Definir orçamento por mês.
+8. Definir orçamento do mês.
 
 9. Editar lançamento.
 

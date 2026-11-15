@@ -57,3 +57,13 @@ Cenário: Calcular saldo sem lançamentos registrados
     Então o sistema deve exibir o saldo de R$ 0,00
     E deve exibir a mensagem "Nenhum lançamento registrado"
     E deve retornar ao menu principal
+
+Cenário: Calcular saldo acumulando ocorrências de recorrentes entre meses
+    Dado que o usuário executou a aplicação no terminal
+    E existe uma receita registrada de R$ 1000,00
+    E existe uma despesa recorrente mensal de R$ 250,00 para o dia "05" iniciada no mês "11/2026"
+    Quando o usuário consulta o saldo na data "02/12/2026"
+    Então o sistema deve exibir o saldo de R$ 750,00
+    Quando o usuário consulta o saldo na data "05/12/2026"
+    Então o sistema deve exibir o saldo de R$ 500,00
+    E deve retornar ao menu principal
