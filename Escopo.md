@@ -23,8 +23,8 @@ Funcionalidades:
 
 9. Definir orçamento do mês.
 
-10. Editar lançamento.
+10. Editar lançamento. - Luana
 
-11. Excluir lançamento.
+11. Excluir lançamento. - Luana
 
 12. Cadastrar categoria.
