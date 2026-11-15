@@ -1,8 +1,10 @@
 def validarValor(valor):
     try:
-        float(valor)
+        valor_num = float(valor)
     except (ValueError, TypeError):
         raise ValueError("Valor inválido")
+    if valor_num <= 0:
+        raise ValueError("O valor deve ser maior que zero")
 
 
 class DespesasRecorrentes:
@@ -11,6 +13,4 @@ class DespesasRecorrentes:
 
     def registrar(self, categoria, valor, dia):
         validarValor(valor)
-        if float(valor) <= 0:
-            raise ValueError("O valor deve ser maior que zero")
         self.itens.append({"categoria": categoria, "valor": valor, "dia": dia})
