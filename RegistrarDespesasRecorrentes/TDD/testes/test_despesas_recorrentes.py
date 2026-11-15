@@ -8,3 +8,7 @@ def despesas_recorrentes():
 def test_registrarDespesaRecorrenteComSucesso(despesas_recorrentes):
     despesas_recorrentes.registrar("Energia", 250.00, 5)
     assert despesas_recorrentes.itens == [{"categoria": "Energia", "valor": 250.00, "dia": 5}]
+
+def test_registrarDespesaRecorrenteComValorNaoNumerico(despesas_recorrentes):
+    with pytest.raises(ValueError, match="Valor inválido"):
+        despesas_recorrentes.registrar("Energia", "abc", 5)
