@@ -33,3 +33,7 @@ def test_desconsiderarRecorrentesComDiaFuturo(saldo):
     receitas_recorrentes = [{"categoria": "Salário", "valor": 3000.00, "dia": 20}]
     despesas_recorrentes = [{"categoria": "Energia", "valor": 250.00, "dia": 15}]
     assert saldo.calcular(receitas, despesas, receitas_recorrentes, despesas_recorrentes, dia_atual=5) == 600.00
+
+def test_calcularSaldoSemLancamentos(saldo):
+    with pytest.raises(ValueError, match="Nenhum lançamento registrado"):
+        saldo.calcular([], [], [], [])
