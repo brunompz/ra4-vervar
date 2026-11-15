@@ -24,3 +24,7 @@ def test_registrarDespesaRecorrenteComValorVazio(despesas_recorrentes):
 def test_registrarDespesaRecorrenteComCategoriaVazia(despesas_recorrentes):
     with pytest.raises(ValueError, match="A categoria é obrigatória"):
         despesas_recorrentes.registrar("", 250.00, 5)
+
+def test_registrarDespesaRecorrenteSemDia(despesas_recorrentes):
+    with pytest.raises(ValueError, match="O dia de ocorrência é obrigatório"):
+        despesas_recorrentes.registrar("Energia", 250.00, "")
