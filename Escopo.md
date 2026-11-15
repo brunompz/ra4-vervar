@@ -19,12 +19,12 @@ Funcionalidades:
 
 7. Filtrar lançamentos por categoria.
 
-8. Visualizar o total por categoria.
+8. Visualizar o total por categoria. - Luana
 
-9. Definir orçamento do mês.
+9. Definir orçamento do mês. - Luana
 
-10. Editar lançamento. - Luana
+10. Editar lançamento. - Guilherme
 
-11. Excluir lançamento. - Luana
+11. Excluir lançamento. - Guilherme
 
 12. Cadastrar categoria.
