@@ -20,3 +20,7 @@ def test_registrarReceitaRecorrenteComValorNegativo(receitas_recorrentes):
 def test_registrarReceitaRecorrenteComValorVazio(receitas_recorrentes):
     with pytest.raises(ValueError, match="O valor é obrigatório"):
         receitas_recorrentes.registrar("Salário", "", 5)
+
+def test_registrarReceitaRecorrenteComCategoriaVazia(receitas_recorrentes):
+    with pytest.raises(ValueError, match="A categoria é obrigatória"):
+        receitas_recorrentes.registrar("", 3000.00, 5)
