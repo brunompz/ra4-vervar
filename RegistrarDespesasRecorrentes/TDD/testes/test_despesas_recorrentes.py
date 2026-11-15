@@ -20,3 +20,7 @@ def test_registrarDespesaRecorrenteComValorNegativo(despesas_recorrentes):
 def test_registrarDespesaRecorrenteComValorVazio(despesas_recorrentes):
     with pytest.raises(ValueError, match="O valor é obrigatório"):
         despesas_recorrentes.registrar("Energia", "", 5)
+
+def test_registrarDespesaRecorrenteComCategoriaVazia(despesas_recorrentes):
+    with pytest.raises(ValueError, match="A categoria é obrigatória"):
+        despesas_recorrentes.registrar("", 250.00, 5)
