@@ -1,3 +1,4 @@
+from datetime import date
 import pytest
 from CalcularSaldo.TDD.Saldo import Saldo
 
@@ -37,3 +38,11 @@ def test_desconsiderarRecorrentesComDiaFuturo(saldo):
 def test_calcularSaldoSemLancamentos(saldo):
     with pytest.raises(ValueError, match="Nenhum lançamento registrado"):
         saldo.calcular([], [], [], [])
+
+def test_calcularSaldoAcumuladoEntreMeses(saldo):
+    receitas = [{"categoria": "Bônus", "valor": 1000.00}]
+    despesas = []
+    receitas_recorrentes = []
+    despesas_recorrentes = [{"categoria": "Energia", "valor": 250.00, "dia": 5, "ano_inicio": 2026, "mes_inicio": 11}]
+    assert saldo.calcular(receitas, despesas, receitas_recorrentes, despesas_recorrentes, data_atual=date(2026, 12, 2)) == 750.00
+    assert saldo.calcular(receitas, despesas, receitas_recorrentes, despesas_recorrentes, data_atual=date(2026, 12, 5)) == 500.00
