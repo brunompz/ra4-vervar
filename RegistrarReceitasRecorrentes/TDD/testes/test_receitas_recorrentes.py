@@ -24,3 +24,7 @@ def test_registrarReceitaRecorrenteComValorVazio(receitas_recorrentes):
 def test_registrarReceitaRecorrenteComCategoriaVazia(receitas_recorrentes):
     with pytest.raises(ValueError, match="A categoria é obrigatória"):
         receitas_recorrentes.registrar("", 3000.00, 5)
+
+def test_registrarReceitaRecorrenteSemDia(receitas_recorrentes):
+    with pytest.raises(ValueError, match="O dia de ocorrência é obrigatório"):
+        receitas_recorrentes.registrar("Salário", 3000.00, "")
