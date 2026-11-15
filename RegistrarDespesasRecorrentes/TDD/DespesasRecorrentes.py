@@ -14,6 +14,11 @@ def validarCategoria(categoria):
         raise ValueError("A categoria é obrigatória")
 
 
+def validarDia(dia):
+    if dia is None or (isinstance(dia, str) and not dia.strip()):
+        raise ValueError("O dia de ocorrência é obrigatório")
+
+
 class DespesasRecorrentes:
     def __init__(self):
         self.itens = []
@@ -21,6 +26,5 @@ class DespesasRecorrentes:
     def registrar(self, categoria, valor, dia):
         validarCategoria(categoria)
         validarValor(valor)
-        if dia is None or (isinstance(dia, str) and not dia.strip()):
-            raise ValueError("O dia de ocorrência é obrigatório")
+        validarDia(dia)
         self.itens.append({"categoria": categoria, "valor": valor, "dia": dia})
