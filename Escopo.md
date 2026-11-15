@@ -13,7 +13,6 @@ Funcionalidades:
 3. Registrar receita mensal recorrente. - João
 
 4. Calcular saldo. - João
-    - Acredito que calcular saldo precise contabilizar os registros recorrentes e lançar automaticamente se o dia for = ao dia do lançamento estabelecido.
 
 5. Registrar categoria do lançamento.
 
