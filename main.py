@@ -1,6 +1,7 @@
 from datetime import date
 
 from CalcularSaldo.TDD.Saldo import Saldo
+from EditarLancamento.TDD.EditarLancamento import EditarLancamento, validarIndice
 from RegistrarDespesas.TDD.Despesas import Despesas
 from RegistrarDespesasRecorrentes.TDD.DespesasRecorrentes import DespesasRecorrentes
 from RegistrarReceitas.TDD.Receitas import Receitas
@@ -15,6 +16,7 @@ def exibir_menu():
     print("3 - Registrar despesa recorrente mensal")
     print("4 - Registrar receita recorrente mensal")
     print("5 - Calcular saldo")
+    print("6 - Editar lançamento")
     print("0 - Sair")
     return input("Escolha uma opção: ").strip()
 
@@ -58,6 +60,37 @@ def exibir_saldo(saldo, receitas, despesas, receitas_recorrentes, despesas_recor
         print(erro)
 
 
+def editar_lancamento(editor, despesas, receitas):
+    """Solicita o lançamento a ser editado e os novos dados no terminal."""
+    print("\n--- Editar Lançamento ---")
+    tipo = input("Tipo (1 - Despesa, 2 - Receita): ").strip()
+    if tipo not in ("1", "2"):
+        print("Opção inválida. Tente novamente.")
+        return
+    itens = despesas.itens if tipo == "1" else receitas.itens
+
+    try:
+        indice = int(input("Número do lançamento: ")) - 1
+    except ValueError:
+        print("Lançamento não encontrado")
+        return
+
+    try:
+        validarIndice(itens, indice)
+    except ValueError as erro:
+        print(erro)
+        return
+
+    categoria = input("Nova categoria: ")
+    valor = input("Novo valor: ")
+
+    try:
+        editor.editar(itens, indice, categoria, valor)
+        print("Lançamento editado com sucesso")
+    except ValueError as erro:
+        print(erro)
+
+
 def main():
     """Inicializa os módulos de negócio e executa o loop principal da aplicação."""
     despesas = Despesas()
@@ -65,6 +98,7 @@ def main():
     despesas_recorrentes = DespesasRecorrentes()
     receitas_recorrentes = ReceitasRecorrentes()
     saldo = Saldo()
+    editor = EditarLancamento()
 
     opcoes = {
         "1": ("Registrar Despesa", despesas, "Despesa registrada com sucesso", False),
@@ -82,6 +116,10 @@ def main():
 
         if escolha == "5":
             exibir_saldo(saldo, receitas, despesas, receitas_recorrentes, despesas_recorrentes)
+            continue
+
+        if escolha == "6":
+            editar_lancamento(editor, despesas, receitas)
             continue
 
         if escolha not in opcoes:
