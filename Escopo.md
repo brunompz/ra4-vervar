@@ -15,15 +15,16 @@ Funcionalidades:
 4. Calcular saldo. - João
 
 5. Registrar categoria do lançamento.
+   - Acredito que o bruno já abordou isso no registrar despesa / receita e eu (joao) repliquei na recorrencia. Mas por enquanto a pessoa digita em texto, quem for fazer precisa fazer com que vá pros nossos inputs as cateogorias pre selecionadas que vão ser registradas na funcionalidade 12
 
-6. Filtrar lançamentos por categoria.
+7. Filtrar lançamentos por categoria.
 
-7. Visualizar o total por categoria.
+8. Visualizar o total por categoria.
 
-8. Definir orçamento do mês.
+9. Definir orçamento do mês.
 
-9. Editar lançamento.
+10. Editar lançamento.
 
-10. Excluir lançamento.
+11. Excluir lançamento.
 
-11. Cadastrar categoria.
+12. Cadastrar categoria.
