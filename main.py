@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 
 from CalcularSaldo.TDD.Saldo import Saldo
 from RegistrarDespesas.TDD.Despesas import Despesas
@@ -29,6 +29,9 @@ def registrar_lancamento(titulo, servico, mensagem_sucesso, recorrente=False):
         if recorrente:
             dia = input("Dia de ocorrência: ")
             servico.registrar(categoria, valor, dia)
+            hoje = date.today()
+            servico.itens[-1]["ano_inicio"] = hoje.year
+            servico.itens[-1]["mes_inicio"] = hoje.month
         else:
             servico.registrar(categoria, valor)
         print(mensagem_sucesso)
@@ -37,9 +40,8 @@ def registrar_lancamento(titulo, servico, mensagem_sucesso, recorrente=False):
 
 
 def exibir_saldo(saldo, receitas, despesas, receitas_recorrentes, despesas_recorrentes):
-    """Calcula e exibe o saldo atual considerando lançamentos normais e recorrentes até o dia de hoje."""
+    """Calcula e exibe o saldo atual considerando lançamentos normais e recorrentes acumulados até hoje."""
     print("\n--- Cálculo de Saldo ---")
-    dia_atual = datetime.now().day
 
     try:
         valor_saldo = saldo.calcular(
@@ -47,7 +49,7 @@ def exibir_saldo(saldo, receitas, despesas, receitas_recorrentes, despesas_recor
             despesas.itens,
             receitas_recorrentes.itens,
             despesas_recorrentes.itens,
-            dia_atual=dia_atual,
+            data_atual=date.today(),
         )
         valor_formatado = f"{valor_saldo:.2f}".replace(".", ",")
         print(f"Saldo atual: R$ {valor_formatado}")
