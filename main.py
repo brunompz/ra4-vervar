@@ -2,6 +2,7 @@ from datetime import date
 
 from CalcularSaldo.TDD.Saldo import Saldo
 from EditarLancamento.TDD.EditarLancamento import EditarLancamento, validarIndice
+from ExcluirLancamento.TDD.ExcluirLancamento import ExcluirLancamento
 from RegistrarDespesas.TDD.Despesas import Despesas
 from RegistrarDespesasRecorrentes.TDD.DespesasRecorrentes import DespesasRecorrentes
 from RegistrarReceitas.TDD.Receitas import Receitas
@@ -17,6 +18,7 @@ def exibir_menu():
     print("4 - Registrar receita recorrente mensal")
     print("5 - Calcular saldo")
     print("6 - Editar lançamento")
+    print("7 - Excluir lançamento")
     print("0 - Sair")
     return input("Escolha uma opção: ").strip()
 
@@ -91,6 +93,28 @@ def editar_lancamento(editor, despesas, receitas):
         print(erro)
 
 
+def excluir_lancamento(excluidor, despesas, receitas):
+    """Solicita o lançamento a ser excluído no terminal."""
+    print("\n--- Excluir Lançamento ---")
+    tipo = input("Tipo (1 - Despesa, 2 - Receita): ").strip()
+    if tipo not in ("1", "2"):
+        print("Opção inválida. Tente novamente.")
+        return
+    itens = despesas.itens if tipo == "1" else receitas.itens
+
+    try:
+        indice = int(input("Número do lançamento: ")) - 1
+    except ValueError:
+        print("Lançamento não encontrado")
+        return
+
+    try:
+        excluidor.excluir(itens, indice)
+        print("Lançamento excluído com sucesso")
+    except ValueError as erro:
+        print(erro)
+
+
 def main():
     """Inicializa os módulos de negócio e executa o loop principal da aplicação."""
     despesas = Despesas()
@@ -99,6 +123,7 @@ def main():
     receitas_recorrentes = ReceitasRecorrentes()
     saldo = Saldo()
     editor = EditarLancamento()
+    excluidor = ExcluirLancamento()
 
     opcoes = {
         "1": ("Registrar Despesa", despesas, "Despesa registrada com sucesso", False),
@@ -120,6 +145,10 @@ def main():
 
         if escolha == "6":
             editar_lancamento(editor, despesas, receitas)
+            continue
+
+        if escolha == "7":
+            excluir_lancamento(excluidor, despesas, receitas)
             continue
 
         if escolha not in opcoes:
