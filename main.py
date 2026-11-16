@@ -7,6 +7,8 @@ from RegistrarDespesas.TDD.Despesas import Despesas
 from RegistrarDespesasRecorrentes.TDD.DespesasRecorrentes import DespesasRecorrentes
 from RegistrarReceitas.TDD.Receitas import Receitas
 from RegistrarReceitasRecorrentes.TDD.ReceitasRecorrentes import ReceitasRecorrentes
+from DefinirOrcamento.TDD.Orcamento import Orcamento
+from VisualizarTotalPorCategoria.TDD.TotalPorCategoria import TotalPorCategoria
 
 
 def exibir_menu():
@@ -19,6 +21,8 @@ def exibir_menu():
     print("5 - Calcular saldo")
     print("6 - Editar lançamento")
     print("7 - Excluir lançamento")
+    print("8 - Definir orçamento do mês")
+    print("9 - Total por categoria")
     print("0 - Sair")
     return input("Escolha uma opção: ").strip()
 
@@ -114,6 +118,26 @@ def excluir_lancamento(excluidor, despesas, receitas):
     except ValueError as erro:
         print(erro)
 
+def definir_orcamento(orcamento):
+    """Solicita o valor e define o orçamento do mês."""
+    print("\n--- Definir Orçamento do Mês ---")
+    valor = input("Valor: ")
+    try:
+        orcamento.definir(valor)
+        print("Orçamento definido com sucesso")
+    except ValueError as erro:
+        print(erro)
+
+
+def exibir_total_por_categoria(total, despesas):
+    """Exibe o total gasto em cada categoria."""
+    print("\n--- Total por Categoria ---")
+    try:
+        totais = total.calcular(despesas.itens)
+        for categoria, valor in totais.items():
+            print(f"{categoria}: R$ {valor:.2f}".replace(".", ","))
+    except ValueError as erro:
+        print(erro)
 
 def main():
     """Inicializa os módulos de negócio e executa o loop principal da aplicação."""
@@ -124,6 +148,9 @@ def main():
     saldo = Saldo()
     editor = EditarLancamento()
     excluidor = ExcluirLancamento()
+    orcamento = Orcamento()
+    total_categoria = TotalPorCategoria()
+
 
     opcoes = {
         "1": ("Registrar Despesa", despesas, "Despesa registrada com sucesso", False),
@@ -149,6 +176,14 @@ def main():
 
         if escolha == "7":
             excluir_lancamento(excluidor, despesas, receitas)
+            continue
+
+        if escolha == "8":
+            definir_orcamento(orcamento)
+            continue
+
+        if escolha == "9":
+            exibir_total_por_categoria(total_categoria, despesas)
             continue
 
         if escolha not in opcoes:
