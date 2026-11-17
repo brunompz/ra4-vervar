@@ -67,3 +67,13 @@ Cenário: Calcular saldo acumulando ocorrências de recorrentes entre meses
     Quando o usuário consulta o saldo na data "05/12/2026"
     Então o sistema deve exibir o saldo de R$ 500,00
     E deve retornar ao menu principal
+
+Cenário: Exibir alerta quando despesas ultrapassam o orçamento do mês
+    Dado que o usuário executou a aplicação no terminal
+    E existe um orçamento definido para o mês atual de R$ 1000,00
+    E existem receitas registradas totalizando R$ 3000,00
+    E existem despesas registradas totalizando R$ 1200,00
+    Quando o usuário seleciona a opção "5" de calcular saldo
+    Então o sistema deve exibir o saldo de R$ 1800,00
+    E deve exibir um alerta informando que as despesas ultrapassaram o orçamento do mês
+    E deve retornar ao menu principal

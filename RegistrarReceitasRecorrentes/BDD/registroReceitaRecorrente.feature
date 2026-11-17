@@ -8,7 +8,7 @@ Cenário: Registrar uma receita recorrente mensal com sucesso
     Dado que o usuário executou a aplicação no terminal
     E que o menu principal está sendo exibido
     Quando o usuário seleciona a opção "4" de registrar receita recorrente
-    E informa a categoria "Salário"
+    E seleciona a categoria "Salário" na lista de categorias
     E informa o valor "3000"
     E informa o dia "05"
     Então o sistema deve registrar a receita recorrente mensal com categoria "Salário", valor R$ 3000,00 e ocorrência no dia 05
@@ -19,7 +19,7 @@ Cenário: Valor não numérico
     Dado que o usuário executou a aplicação no terminal
     E que o menu principal está sendo exibido
     Quando o usuário seleciona a opção "4" de registrar receita recorrente
-    E informa a categoria "Salário"
+    E seleciona a categoria "Salário" na lista de categorias
     E informa o valor "abc"
     E informa o dia "05"
     Então o sistema deve exibir a mensagem "Valor inválido"
@@ -29,7 +29,7 @@ Cenário: Valor negativo
     Dado que o usuário executou a aplicação no terminal
     E que o menu principal está sendo exibido
     Quando o usuário seleciona a opção "4" de registrar receita recorrente
-    E informa a categoria "Salário"
+    E seleciona a categoria "Salário" na lista de categorias
     E informa o valor "-50"
     E informa o dia "05"
     Então o sistema deve exibir a mensagem "O valor deve ser maior que zero"
@@ -39,27 +39,25 @@ Cenário: Falta de preenchimento do campo de valor
     Dado que o usuário executou a aplicação no terminal
     E que o menu principal está sendo exibido
     Quando o usuário seleciona a opção "4" de registrar receita recorrente
-    E informa a categoria "Salário"
+    E seleciona a categoria "Salário" na lista de categorias
     E informa o valor ""
     E informa o dia "05"
     Então o sistema deve exibir a mensagem "O valor é obrigatório"
     E não deve registrar nenhuma receita recorrente
 
-Cenário: Categoria vazia
+Cenário: Categoria inexistente na seleção
     Dado que o usuário executou a aplicação no terminal
     E que o menu principal está sendo exibido
     Quando o usuário seleciona a opção "4" de registrar receita recorrente
-    E informa a categoria ""
-    E informa o valor "3000"
-    E informa o dia "05"
-    Então o sistema deve exibir a mensagem "A categoria é obrigatória"
+    E informa um número de categoria inexistente
+    Então o sistema deve exibir a mensagem "Categoria não encontrada"
     E não deve registrar nenhuma receita recorrente
 
 Cenário: Falta de seleção do dia específico
     Dado que o usuário executou a aplicação no terminal
     E que o menu principal está sendo exibido
     Quando o usuário seleciona a opção "4" de registrar receita recorrente
-    E informa a categoria "Salário"
+    E seleciona a categoria "Salário" na lista de categorias
     E informa o valor "3000"
     E informa o dia ""
     Então o sistema deve exibir a mensagem "O dia de ocorrência é obrigatório"
